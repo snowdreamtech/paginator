@@ -1,9 +1,8 @@
-module github.com/snowdreamtech/gorm-paginator
+module github.com/snowdreamtech/paginator
 
 go 1.12
 
 require (
-	github.com/gin-gonic/gin v1.6.3 // indirect
-	github.com/gorilla/context v1.1.1 // indirect
 	github.com/jinzhu/gorm v1.9.16
+	github.com/snowdreamtech/gorm-paginator v0.0.0-20200923065650-20295acd59b4 // indirect
 )

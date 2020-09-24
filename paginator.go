@@ -1,6 +1,12 @@
 package paginator
 
 const (
+	// DefaultPage default page
+	DefaultPage = 1
+
+	// DefaultLimit default limit
+	DefaultLimit = 10
+
 	orderAsc  = "asc"
 	orderDesc = "desc"
 )
@@ -16,7 +22,7 @@ type paginator struct {
 // Paginator   Paginator
 type Paginator interface {
 	// Paginate  return result.
-	PaginateWithResult(query Query, options Options) Result
+	PaginateWithResult(list []interface{}, page int, limit int) Result
 
 	// Paginate  return result.
 	Paginate(page int, limit int) *interface{}
