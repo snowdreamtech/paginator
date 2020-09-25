@@ -25,7 +25,7 @@ func (gormDB *gormDB) Paginate(page uint, limit uint) *gorm.DB {
 	return db.Offset(offset).Limit(limit)
 }
 
-func (gormDB *gormDB) PaginateWithResult(list []interface{}, page uint, limit uint) paginator.PageResult {
+func (gormDB *gormDB) PaginateWithResult(list *[]interface{}, page uint, limit uint) paginator.PageResult {
 	var total uint
 
 	db := gormDB.DB
@@ -47,18 +47,18 @@ func (gormDB *gormDB) PaginateWithResult(list []interface{}, page uint, limit ui
 			Page:  page,
 			Limit: limit,
 			Total: total,
-			List:  list,
+			List:  *list,
 			Error: err,
 		}
 	}
 
-	err = db.Offset(offset).Limit(limit).Find(&list).Error
+	err = db.Offset(offset).Limit(limit).Find(list).Error
 
 	return paginator.PageResult{
 		Page:  page,
 		Limit: limit,
 		Total: total,
-		List:  list,
+		List:  *list,
 		Error: err,
 	}
 }

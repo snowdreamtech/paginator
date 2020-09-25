@@ -22,7 +22,7 @@ type paginator struct {
 // Paginator   Paginator
 type Paginator interface {
 	// Paginate  return result.
-	PaginateWithResult(list []interface{}, page int, limit int) Result
+	PaginateWithResult(list *[]interface{}, page int, limit int) Result
 
 	// Paginate  return result.
 	Paginate(page int, limit int) *interface{}
