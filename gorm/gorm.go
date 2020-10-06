@@ -1,15 +1,15 @@
 package gorm
 
 import (
-	"github.com/jinzhu/gorm"
 	"github.com/snowdreamtech/paginator"
+	"gorm.io/gorm"
 )
 
 type gormDB struct {
 	*gorm.DB
 }
 
-func (gormDB *gormDB) Paginate(page uint, limit uint) *gorm.DB {
+func (gormDB *gormDB) Paginate(page int, limit int) *gorm.DB {
 	db := gormDB.DB
 
 	if page <= 0 {
@@ -25,8 +25,8 @@ func (gormDB *gormDB) Paginate(page uint, limit uint) *gorm.DB {
 	return db.Offset(offset).Limit(limit)
 }
 
-func (gormDB *gormDB) PaginateWithResult(list *[]interface{}, page uint, limit uint) paginator.PageResult {
-	var total uint
+func (gormDB *gormDB) PaginateWithResult(list *[]interface{}, page int, limit int) paginator.PageResult {
+	var total int
 
 	db := gormDB.DB
 
